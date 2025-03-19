@@ -1,1 +1,29 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Embed Generator</title>
+</head>
+<body>
+    <h2>Enter a YouTube URL:</h2>
+    <input type="text" id="youtubeUrl" placeholder="Paste YouTube link here">
+    <button onclick="generateIframe()">Embed Video</button>
+    <br><br>
+    <div id="videoContainer"></div>
+
+    <script>
+        function generateIframe() {
+            let url = document.getElementById("youtubeUrl").value;
+            let videoId = url.split("v=")[1]?.split("&")[0]; // Extract video ID
+
+            if (videoId) {
+                let iframeCode = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+                document.getElementById("videoContainer").innerHTML = iframeCode;
+            } else {
+                alert("Invalid YouTube URL. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
